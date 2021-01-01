@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <h1>Hello World!</h1>
+        <h2>Is anybody in there?</h2>
+    </head>
+
+    <script> 
+        var x = '0', y = '0', o ;
+
+        function input(n){
+            x = x + n
+
+            document.getElementById("displayY").innerHTML = y
+            document.getElementById("displayX").innerHTML = x
+        };
+
+        function operator(n){
+            y = x
+            x = '0'
+            o = n
+        };
+
+        function equals(){
+            var Xtemp = x
+            x = Number(x)
+            y = Number(y)
+
+            if ( o == '+') { y = y + x };
+            if ( o == '-') { y = y - x };
+            if ( o == '*') { y = y * x };
+            if ( o == '/') { y = y / x };
+            if ( o == '^') { y = y ** x };
+
+            x = Xtemp
+            y = y.toString()
+
+            document.getElementById("displayY").innerHTML = x
+            document.getElementById("displayX").innerHTML = y
+
+            [x, y] = [y, x];
+        };
+
+        function CE() {
+            x = '0'
+            y = '0'
+            o = '0'
+
+            document.getElementById("displayY").innerHTML = y
+            document.getElementById("displayX").innerHTML = x
+        };
+
+        function swap() {
+            [x,y] = [y,x]
+
+            document.getElementById("displayY").innerHTML = y
+            document.getElementById("displayX").innerHTML = x
+        };
+
+    </script>
+
+    <body>
+        <p>This is a calculator</p>
+
+        <div id="displayY"></div>
+        <div id="displayX">0</div>
+
+        <div id="buttons">
+            <button onclick="input('1')">1</button>
+            <button onclick="input('2')">2</button> 
+            <button onclick="input('3')">3</button>
+            <button onclick="operator('+')">+</button>
+            <button onclick="operator('^')">^</button>
+            <br>
+            <button onclick="input('4')">4</button>
+            <button onclick="input('5')">5</button>
+            <button onclick="input('6')">6</button>
+            <button onclick="operator('-')">-</button>
+            <button onclick="CE()">CE</button>
+            <br>
+            <button onclick="input('7')">7</button>
+            <button onclick="input('8')">8</button>
+            <button onclick="input('9')">9</button>
+            <button onclick="operator('*')">*</button>
+            <button onclick="swap()">SW</button>
+            <br>
+            <button onclick="input('.')">.</button>
+            <button onclick="input('0')">0</button>
+            <button onclick="equals()">=</button>
+            <button onclick="operator('/')">/</button>
+        </div>
+        
+
+    </body>
+</html>
